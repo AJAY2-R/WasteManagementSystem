@@ -1,0 +1,56 @@
+{% extends 'admin/base.html' %}
+
+{% block content %}
+<div class="flex flex-col items-center p-4" style="width:100%">
+
+  <h2 class="text-2xl font-bold text-center">Pickup Request's</h2>
+
+  <form method="post" class=" bg-white p-4 rounded-lg shadow mt-4 w-full md:w-1/2">
+
+    {% csrf_token %}
+
+    <h5 class="font-medium mb-2">Select Date</h5>
+    <div align="center">
+        <label>Start Date</label>
+        <input type="date" name="strt_date" class="border p-2 rounded w-1/3 md:w-1/2" required  >  
+ 
+        <label>End Date</label>
+        <input type="date" name="end_date" class="border p-2 rounded w-1/3 md:w-1/2" required>
+    </div>
+
+    <div class="text-center mt-4">
+      <button class="bg-blue-500 text-white py-2 px-4 rounded">Search Now</button>
+    </div>
+
+  </form>
+  <br>
+  <div class="overflow-x-auto rounded-lg shadow w-full">
+  <table class="w-full table-auto border-collapse">
+    <tr> 
+        <th class="p-3 mb-2 bg-primary text-light">Reqest Id </th>  
+        <th class="p-3 mb-2 bg-primary text-light">Name </th>
+        <th class="p-3 mb-2 bg-primary text-light">Address </th>
+        <th class="p-3 mb-2 bg-primary text-light">Requested Date</th>
+        <th class="p-3 mb-2 bg-primary text-light">collected Date</th>
+        <th class="p-3 mb-2 bg-primary text-light">Status</th>
+    </tr> 
+    
+    {% for i in pickup %}
+    <tr>
+            <td>{{i.id}}</td>
+            <td>{{i.userid.name}}</td>
+            <td>{{i.userid.address}}</td>
+            <td>{{i.rdate}}</td>
+            <td>{{i.pdate}}</td>
+            <td>
+                {% if i.status == 'collected' %}
+                    <a href="CollectionHistory?id={{i.id}}"  class="btn-info">{{i.status}} &nbsp;View Details</a>
+                {% else %}
+                    Not Collected
+                {% endif %}
+            </td>
+    </tr>  
+    {% endfor %}
+
+</table>
+{% endblock %}

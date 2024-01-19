@@ -1,0 +1,21 @@
+{% extends 'collector/base.html' %}
+{% block content %}
+<table class="table table-bordered table-hover">
+    <tr>   
+        <th class="p-3 mb-2 bg-primary text-light">Name </th>
+        <th class="p-3 mb-2 bg-primary text-light">Address </th>
+        <th class="p-3 mb-2 bg-primary text-light">Mobile</th>
+        <th class="p-3 mb-2 bg-primary text-light">Email id </th>
+    </tr> 
+    
+    {% for i in user %}
+    <tr>
+            <td>{{i.name}}</td>
+            <td>{{i.address}}</td>
+            <td>{{i.mobile}}</td>
+            <td>{{i.email}}</td>
+    </tr>  
+    {% endfor %}
+
+</table>
+{% endblock %}

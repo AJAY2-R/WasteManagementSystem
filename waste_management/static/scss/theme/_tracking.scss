@@ -1,0 +1,43 @@
+/* Tracking Form Area css
+============================================================================================ */
+.tracking_box_area{
+	.tracking_box_inner{
+		p{
+			max-width: 870px;
+			color: #555555;
+			margin-bottom: 25px;
+		}
+		.tracking_form{
+			max-width: 645px;
+			.form-group{
+        margin-bottom: 1.2rem;
+				input{
+					height: 40px;
+					border: 1px solid #eee;
+					padding: 0px 15px;
+					outline: none;
+					box-shadow: none;
+					border-radius: 0px;
+					font-size: 14px;
+					color: #999999;
+					// font-family: $primary-font;
+					font-weight: normal;
+					@include placeholder{
+						font-size: 14px;
+						color: #999999;
+						// font-family: $primary-font;
+						font-weight: normal;
+					}
+				}
+				&:last-child{
+					margin-bottom: 0px;
+				}
+				.submit_btn{
+					text-transform: uppercase;
+				}
+			}
+		}
+	}
+}
+/* End Tracking Form Area css
+============================================================================================ */

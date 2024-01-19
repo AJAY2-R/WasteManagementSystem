@@ -1,0 +1,170 @@
+{% extends 'collector/base.html'%}
+{% load static %}
+{% block content %}
+  <title>Waste - Collect </title>
+  <script src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
+  <div class="container">
+    <h4>Waste Collect</h4>
+
+    <form method="post" >
+      {% csrf_token %}
+
+      <div class="form-group row">
+        <div class="col">
+            Request Id :<input type="text" name="pickupid" value={{ pickup.id }} disabled ><br>
+            <b> Name     :  {{ pickup.userid.name }} </b>
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="col">
+          <label for="category-select">Category:</label>
+          <select id="category-select" name="category[]" class="form-control ">
+            {% for category in cat %}
+            <option value="{{ category.name }}">{{ category.name }}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <div class="col">
+          <label for="quantity-input">Quantity(kg):</label>
+          <input type="number" id="quantity-input" name="quantity[]" class="form-control" required>
+        </div>
+        <div class="col" style="margin-top:32px">
+          <button id="add-button" type="button" class="btn btn-danger "><i class="fas fa-plus"></i></button>
+        </div>
+      </div>
+
+      
+      <br>
+      <h4>Selected Products</h4>
+      <table id="product-table" class="table">
+        <thead>
+          <tr>
+            <th>Category</th>
+            <th>Quantity(kg)</th>
+            <th>Point</th>
+            <th>Total point</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="product-table-body"></tbody>
+  
+      </table>
+
+      <h4>Total Quantity: <span id="total-quantity">0</span></h4>
+
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var categorySelect = document.getElementById('category-select');
+      var quantityInput = document.getElementById('quantity-input');
+      var addButton = document.getElementById('add-button');
+      var productTableBody = document.getElementById('product-table-body');
+      var selectedProducts = [];
+  
+      addButton.addEventListener('click', function() {
+        var category = categorySelect.value;
+        var quantity = parseInt(quantityInput.value);
+  
+        if (category && quantity > 0) {
+          var product = {
+            'category': category,
+            'quantity': quantity
+          };
+  
+          selectedProducts.push(product);
+          updateTable();
+        }
+      });
+  
+      productTableBody.addEventListener('click', function(event) {
+        if (event.target.classList.contains('remove-product')) {
+          var row = event.target.parentNode.parentNode;
+          var index = Array.from(productTableBody.children).indexOf(row);
+          selectedProducts.splice(index, 1);
+          updateTable();
+        }
+      });
+  
+      productTableBody.addEventListener('change', function(event) {
+        if (event.target.classList.contains('quantity-input')) {
+          var row = event.target.parentNode.parentNode;
+          var index = Array.from(productTableBody.children).indexOf(row);
+          var quantity = parseInt(event.target.value);
+  
+          if (quantity > 0) {
+            selectedProducts[index].quantity = quantity;
+            updateTable();
+          }
+        }
+      });
+  
+      function updateTable() {
+        productTableBody.innerHTML = '';
+  
+        var totalQuantity = 0;
+  
+        selectedProducts.forEach(function(product, index) {
+          var row = document.createElement('tr');
+  
+          var categoryCell = document.createElement('td');
+          var categoryInput=document.createElement('input');
+          categoryInput.name='cat[]'
+          categoryInput.type='text'
+          categoryInput.style='border:none'
+          categoryInput.value=product.category
+          categoryCell.appendChild(categoryInput);
+  
+          var quantityCell = document.createElement('td');
+          var quantityInput = document.createElement('input');
+          quantityInput.name='qty[]'
+          quantityInput.type = 'number';
+          quantityInput.classList.add('quantity-input');
+          quantityInput.value = product.quantity.toString();
+          quantityCell.appendChild(quantityInput);
+          var pointCell = document.createElement('td');
+          var point = getpointByCategory(product.category);
+          pointCell.textContent = point.toString();
+  
+          var totalpointCell = document.createElement('td');
+          var totalpoint = point * product.quantity;
+          totalpointCell.textContent = totalpoint.toString();
+  
+          var actionCell = document.createElement('td');
+          var removeButton = document.createElement('button');
+          removeButton.classList.add('remove-product');
+          removeButton.textContent = 'Remove';
+          actionCell.appendChild(removeButton);
+  
+          row.appendChild(categoryCell);
+          row.appendChild(quantityCell);
+          row.appendChild(pointCell);
+          row.appendChild(totalpointCell);
+          row.appendChild(actionCell);
+  
+          productTableBody.appendChild(row);
+  
+          totalQuantity += product.quantity;
+        });
+  
+        document.getElementById('total-quantity').textContent = totalQuantity.toString();
+      }
+  
+      function getpointByCategory(category) {
+        var point = 0;
+  
+        {% for category in cat %}
+        if ('{{ category.name }}' === category) {
+          point = {{ category.point }};
+        }
+        console.log('Retrieved point for ' + category + ': ' + point);
+        {% endfor %}
+  
+        return point;
+      }
+    });
+  </script>
+  
+  
+{% endblock %}

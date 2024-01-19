@@ -1,0 +1,204 @@
+{% extends 'admin/base.html' %}
+{% load static %}
+{% block content %}
+  <!-- strat content -->
+  <div class="bg-gray-100 flex-1 p-6 md:mt-16"> 
+
+    
+    <!-- General Report -->
+    <div class="grid grid-cols-4 gap-6 xl:grid-cols-1">
+
+
+    <!-- card -->
+    <div class="report-card">
+        <div class="card">
+            <div class="card-body flex flex-col">
+                
+                <!-- top -->
+                <div class="flex flex-row justify-between items-center">
+                    <div class="h6 text-indigo-700 fad fa-shopping-cart"></div>
+                </div>
+                <!-- end top -->
+
+                <!-- bottom -->
+                <div class="mt-8">
+                    <h1 class="h5 num">{{Shipped}}</h1>
+                    <p>items sales</p>
+                </div>                
+                <!-- end bottom -->
+    
+            </div>
+        </div>
+        <div class="footer bg-white p-1 mx-4 border border-t-0 rounded rounded-t-none"></div>
+    </div>
+    <!-- end card -->
+
+
+    <!-- card -->
+    <div class="report-card">
+        <div class="card">
+            <div class="card-body flex flex-col">
+                
+                <!-- top -->
+                <div class="flex flex-row justify-between items-center">
+                    <div class="h6 text-red-700 fad fa-store"></div>
+                </div>
+                <!-- end top -->
+
+                <!-- bottom -->
+                <div class="mt-8">
+                    <h1 class="h5 num">{{orders}}</h1>
+                    <p>new orders</p>
+                </div>                
+                <!-- end bottom -->
+    
+            </div>
+        </div>
+        <div class="footer bg-white p-1 mx-4 border border-t-0 rounded rounded-t-none"></div>
+    </div>
+    <!-- end card -->
+
+
+    <!-- card -->
+    <div class="report-card">
+        <div class="card">
+            <div class="card-body flex flex-col">
+                
+                <!-- top -->
+                <div class="flex flex-row justify-between items-center">
+                    <div class="h6 text-yellow-600 fad fa-sitemap"></div>
+                    
+                </div>
+                <!-- end top -->
+
+                <!-- bottom -->
+                <div class="mt-8">
+                    <h1 class="h5 num">{{product_count}}</h1>
+                    <p>total Products</p>
+                </div>                
+                <!-- end bottom -->
+    
+            </div>
+        </div>
+        <div class="footer bg-white p-1 mx-4 border border-t-0 rounded rounded-t-none"></div>
+    </div>
+    <!-- end card -->
+
+
+    <!-- card -->
+    <div class="report-card">
+        <div class="card">
+            <div class="card-body flex flex-col">
+                
+                <!-- top -->
+                <div class="flex flex-row justify-between items-center">
+                    <div class="h6 text-green-700 fad fa-users"></div>
+                    
+                </div>
+                <!-- end top -->
+
+                <!-- bottom -->
+                <div class="mt-8">
+                    <h1 class="h5 num">{{user}}</h1>
+                    <p>Users</p>
+                </div>                
+                <!-- end bottom -->
+    
+            </div>
+        </div>
+        <div class="footer bg-white p-1 mx-4 border border-t-0 rounded rounded-t-none"></div>
+    </div>
+    <!-- end card -->
+    
+
+</div>
+    <!-- End General Report -->
+
+   
+    <!-- Sales Overview -->
+    <div class="card mt-6">
+
+    <!-- header -->
+    <div class="card-header flex flex-row justify-between">
+        <h1 class="h6">Collection Overview</h1>
+
+        <div class="flex flex-row justify-center items-center">
+
+            <a href="">
+                <i class="fad fa-chevron-double-down mr-6"></i>
+            </a>
+
+            <a href="">
+                <i class="fad fa-ellipsis-v"></i>
+            </a>
+
+        </div>
+
+    </div>
+    <!-- end header -->
+
+    <!-- body -->
+    <div class="card-body grid grid-cols-2 gap-6 lg:grid-cols-1">
+
+        <div class="p-8">
+            <h1 class="h2">{{collection}}kg</h1>
+            <p class="text-black font-medium">Waste collected this month</p>
+
+            <a href="CollectionHistory" class="btn-shadow mt-6">view details</a>
+
+        </div>
+    
+    </div>
+    <!-- end body -->
+
+</div>
+    <!-- end Sales Overview -->
+
+    <!-- start numbers -->
+    <div class="grid grid-cols-5 gap-6 xl:grid-cols-2">
+
+    
+</div>
+    <!-- end nmbers -->
+
+    <!-- start quick Info -->
+    <div class="grid grid-cols-3 gap-6 mt-6 xl:grid-cols-1">
+
+
+    <!-- Start Recent Sales -->
+    <div class="card col-span-5 xl:col-span-1">
+        <div class="card-header">Products</div>
+
+        <table class="table-auto w-full text-left">
+            <thead>
+                <tr>
+                    <th class="px-4 py-2 border-r"></th>
+                    <th class="px-4 py-2 border-r">product</th>
+                    <th class="px-4 py-2 border-r">price</th>
+                    <th class="px-4 py-2 border-r">point</th>
+                </tr>
+            </thead>
+            <tbody class="text-gray-600">
+                {% for i in pd %}
+                <tr>                    
+                    <td class="border border-l-0 px-4 py-2 text-center text-green-500"><i class="fad fa-circle"></i></td>
+                    <td class="border border-l-0 px-4 py-2">{{i.name}}</td>
+                    <td class="border border-l-0 px-4 py-2">₹{{i.rate}}</span></td>
+                    <td class="border border-l-0 border-r-0 px-4 py-2">{{i.point}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <!-- End Recent Sales -->
+
+
+</div>
+    <!-- end quick Info -->
+        
+
+  </div>
+  <!-- end content -->
+</div>
+<!-- end wrapper -->
+{% endblock content %}

@@ -1,0 +1,78 @@
+
+{% extends 'user/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container py-5">
+  <h1>Edit Profile</h1>
+  
+  <form method="post" class="needs-validation" novalidate>
+    {% csrf_token %}
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input type="text" name="name" class="form-control" value="{{ app_user.user.first_name }}" required>
+      <div class="invalid-feedback">Please enter your name.</div>
+    </div>
+    
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="email" name="email" class="form-control" value="{{ app_user.email }}" required>
+      <div class="invalid-feedback">Please enter a valid email address.</div>
+    </div>
+    
+    <div class="form-group">
+      <label for="mobile">Mobile:</label>
+      <input type="text" name="mobile" class="form-control" value="{{ app_user.mobile }}" required>
+      <div class="invalid-feedback">Please enter your mobile number.</div>
+    </div>
+    
+    
+    
+    <div class="form-group">
+      <label for="address">Address:</label>
+      <input type="text" name="address" class="form-control" value="{{ app_user.address }}" required>
+      <div class="invalid-feedback">Please enter your address.</div>
+    </div>
+    
+    
+    <div class="form-group">
+      <label for="pincode">Pincode:</label>
+      <input type="text" name="pincode" class="form-control" value="{{ app_user.pincode }}" required>
+      <div class="invalid-feedback">Please enter your pincode.</div>
+    </div>
+    
+    <button type="submit" class="btn btn-primary">Update</button> <button type="button" class="btn btn-btn-secondary " onclick="redirectToIndex()">Cancel</button>
+  </form>
+  
+  {% if message %}
+    <p>{{ message }}</p>
+  {% endif %}
+</div>
+
+<script>
+  // JavaScript to enable form validation
+  ;(function() {
+    'use strict';
+
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.querySelectorAll('.needs-validation');
+
+    // Loop over them and prevent submission
+    Array.prototype.slice.call(forms).forEach(function(form) {
+      form.addEventListener('submit', function(event) {
+        if (!form.checkValidity()) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+
+        form.classList.add('was-validated');
+      }, false);
+    });
+  })();
+
+  function redirectToIndex() {
+    var baseUrl = window.location.protocol + "//" + window.location.host;
+    window.location.replace(baseUrl + "/user");  
+  }
+</script>
+{% endblock %}

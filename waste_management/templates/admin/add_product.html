@@ -1,0 +1,107 @@
+{% extends 'admin/base.html' %}
+
+{% block content %}
+<div class="flex flex-col items-center p-4" style="width:100%">
+
+  <div class="bg-white p-6 rounded-lg shadow-md w-2/3">
+
+    <h2 class="text-2xl font-bold mb-6 text-center">Add Product</h2>
+
+    <form id="productForm" method="post" enctype="multipart/form-data" class="space-y-4" novalidate>
+
+      {% csrf_token %}
+
+      <div>
+        <label class="block text-sm">Name</label>
+        <input type="text" name="name" class="w-full border p-2 rounded">
+        
+        <div class="text-red-500 hidden">
+          Please enter name
+        </div>
+      </div>
+
+      <div>
+        <label class="block text-sm">Description</label>
+        <input type="text" name="desc" class="w-full border p-2 rounded">
+        
+        <div class="text-red-500 hidden">
+          Please enter description
+        </div>
+      </div>
+
+      <div>
+        <label class="block text-sm">Rate</label>
+        <input type="text" name="rate" class="w-full border p-2 rounded">
+        <div class="text-red-500 hidden">
+          Please enter Rate
+        </div>
+      </div>
+
+      <div>
+        <label class="block text-sm">Point</label>
+        <input type="text" name="point" class="w-full border p-2 rounded">  
+        <div class="text-red-500 hidden">
+          Point
+        </div>
+      </div>
+
+      <div>
+        <label class="block text-sm">Stock</label>
+        <input type="text" name="stock" class="w-full border p-2 rounded">
+        <div class="text-red-500 hidden">
+          Please enter stock
+        </div>
+      </div>
+
+      <div>
+        <label class="block text-sm">Image</label>
+        <input type="file" name="image" class="w-full border p-2 rounded">
+        <div class="text-red-500 hidden">
+          Please Select image
+        </div>
+      </div>
+
+      <button class="bg-blue-500 text-white py-2 px-4 rounded block w-full">
+        Submit
+      </button>
+
+    </form>
+
+  </div>
+
+</div>
+
+<script>
+
+  // Form validation
+  const forms = document.querySelectorAll('.needs-validation');
+  
+  Array.from(forms).forEach(form => {
+  
+    form.addEventListener('submit', event => {
+  
+      if (!form.checkValidity()) {
+  
+        event.preventDefault();
+        event.stopPropagation();
+        
+        // Show error messages  
+        form.querySelectorAll(':invalid').forEach(input => {
+          input.nextElementSibling.classList.remove('hidden');  
+        })
+  
+      } else {
+      
+        // Hide error messages
+        form.querySelectorAll('div.text-red-600').forEach(div => {
+          div.classList.add('hidden');
+        })
+      
+      }
+  
+    });
+  
+  });
+  </script>
+  
+{% endblock %}

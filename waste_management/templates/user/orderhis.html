@@ -1,0 +1,36 @@
+{% extends 'user/base.html' %}
+{% block content %}
+<table class="table table-bordered table-hover">
+    <tr>   
+        <th class="p-3 mb-2 bg-primary text-light">Product </th>
+        <th class="p-3 mb-2 bg-primary text-light">Date </th>
+        <th class="p-3 mb-2 bg-primary text-light">Payment</th>
+        <th class="p-3 mb-2 bg-primary text-light">Status </th>
+        <th class="p-3 mb-2 bg-primary text-light">Details </th>
+
+    </tr> 
+    
+    {% for i in order %}
+    <tr>
+            <td>{{i.product.name}}</td>
+            <td>{{i.date}}</td>
+            <td>
+            {% if i.type == 'R' %}
+                    {{ i.total }} W-Points
+                {% else %}
+                    ₹ {{ i.total }}
+                {% endif %}
+            </td>
+            <td>
+                {% if i.status == 'Delivered' or i.type == 'R' %} 
+                    {{i.status}} <br> <a href="Bill?id={{i.id}}" class="alert-primary">Click here to view bill</a>
+                {% else %}
+                    {{i.status}}
+                {% endif %}
+            </td>
+            <td><a href="OrderUpdates?id={{i.id}}" class='btn btn-dark' >Show Details</a></td>
+    </tr>  
+    {% endfor %}
+
+</table>
+{% endblock %}

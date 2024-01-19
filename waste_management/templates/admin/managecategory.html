@@ -1,0 +1,94 @@
+{% extends 'admin/base.html' %}
+
+{% block content %}
+
+<div class="flex items-center justify-center" style="width:100%">>
+
+  <div class="bg-white p-8 rounded-lg shadow-md w-96">
+  
+    <h2 class="text-lg font-medium text-center">Manage Category</h2>
+
+    <form method="post" novalidate>
+
+      {% csrf_token %}
+
+      <div class="mt-4">
+        <label>Name</label>
+        <input 
+          type="text"
+          name="name"
+          value="{{cat.name}}"
+          class="w-full border p-2 rounded"
+        >
+        <div class="hidden text-red-600 mt-1">
+          Please enter name
+        </div>
+      </div>
+
+      <div class="mt-4">
+        <label>Point</label>
+        <input
+          type="text"  
+          name="point"
+          value="{{cat.point}}"
+          class="w-full border p-2 rounded" 
+        >
+        <div class="hidden text-red-600 mt-1">
+          Please enter point
+        </div> 
+      </div>
+
+      <div class="flex justify-between gap-4 mt-4">
+        <button
+          type="submit"
+          class="py-2 px-4 bg-blue-500 hover:bg-blue-600 rounded text-white" 
+        >
+          Update
+        </button>
+       
+      </div>
+
+    </form>
+
+  </div>
+
+</div>
+  
+  {% if message %}
+    <p>{{ message }}</p>
+  {% endif %}
+</div>
+
+<script>
+
+  // Form validation
+  const forms = document.querySelectorAll('.needs-validation');
+  
+  Array.from(forms).forEach(form => {
+  
+    form.addEventListener('submit', event => {
+  
+      if (!form.checkValidity()) {
+  
+        event.preventDefault();
+        event.stopPropagation();
+        
+        // Show error messages  
+        form.querySelectorAll(':invalid').forEach(input => {
+          input.nextElementSibling.classList.remove('hidden');  
+        })
+  
+      } else {
+      
+        // Hide error messages
+        form.querySelectorAll('div.text-red-600').forEach(div => {
+          div.classList.add('hidden');
+        })
+      
+      }
+  
+    });
+  
+  });
+  </script>
+{% endblock %}

@@ -1,0 +1,133 @@
+/*=================== confirmation page css start ====================*/
+.order-wrapper {
+	background: #f1f6f7;
+	padding: 25px;
+	.list-row {
+		border-bottom: 1px solid #eee;
+		padding: 10px 0;
+		h6 {
+			text-transform: uppercase;
+		}
+		.total {
+			font-weight: 500;
+			color: $title-color;
+		}
+	}
+	.bold-lable {
+		font-weight: 700;
+		text-transform: uppercase;
+		color: $title-color;
+	}
+	.payment-info {
+		margin-top: 20px;
+		background: #f5f5f5;
+		border-top: 1px solid #eee;
+		padding: 15px;
+	}
+	.terms-link {
+		color: #43b253;
+	}
+	.pixel-checkbox {
+		margin-top: 5px;
+	}
+}
+
+
+.billing-title {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.3em;
+  margin-bottom: 15px;
+  border-color: #DDDDDD;
+}
+
+.billing-alert{
+  font-size: 18px;
+  color: $primary-color;
+  margin-bottom: 30px;
+}
+
+
+.confirmation-card{
+  padding: 38px;
+  background: #f1f6f7;
+
+  tr td:last-child{
+    color: $title-color;
+    padding-left: 25px;
+  }
+}
+
+
+.order_details_table{
+	background: #f1f6f7;
+	padding: 30px;
+	margin-top: 75px;
+	@media (min-width: 767px) {
+		margin-top: 45px;
+	}
+	h2{
+		color: $title-color;
+		font-size: 18px;
+		padding-bottom: 15px;
+	}
+	.table{
+    margin-bottom: 0px;
+		thead{
+			tr{
+				th{
+					border-bottom: 1px solid #ddd;
+					font-size: 16px;
+					font-family: $title-font;
+          font-weight: normal;
+          color: $title-color;
+				}
+			}
+		}
+		tbody{
+			tr{
+
+			@media(max-width: 1000px){
+				&:last-child{
+					height: 50px;
+				}
+			}
+				td{
+			
+          border: 0;
+          color: #777777;
+					p{
+						margin-bottom: 0px;
+					}
+					h5{
+            font-family: $text-font;
+						color: $title-color;
+            margin-bottom: 0px;
+            font-size: 15px;
+            text-transform: capitalize;
+            font-weight: 500;
+					}
+					h4{
+            font-family: $text-font;
+						text-transform: uppercase;
+						margin-bottom: 0px;
+            color: $title-color;
+            font-size: 15px;
+            text-transform: capitalize;
+            font-weight: 500;
+					}
+				}
+				&:last-child{
+					td{
+            border-top: 1px solid #ddd;
+            padding-bottom: 0;
+						p{
+							color: $title-color;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+/*=================== confirmation page css end ====================*/

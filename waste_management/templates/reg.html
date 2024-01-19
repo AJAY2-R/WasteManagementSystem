@@ -1,0 +1,55 @@
+{% extends 'base1.html'%}
+{% load static %}
+{% block content %}
+<html>
+    <body>
+       
+<section class="book_section layout_padding">
+    <div class="container">
+      <div class="heading_container">
+        <h2>
+         
+        </h2>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form_container">
+            <form action=" " method="POST" class="needs-validation" novalidate>
+              {% csrf_token %}
+              <div>
+                <input type="text" class="form-control" placeholder="Name"  name="name" required />
+                <div class="invalid-feedback">Please enter your name</div>
+              </div>
+              <div>
+                <input type="text" class="form-control" placeholder="Number" name="phone" required />
+                <div class="invalid-feedback">Please enter your number</div>
+              </div>
+              <div>
+                <input type="email" class="form-control" placeholder="Email" name="email" required />
+                <div class="invalid-feedback">Please enter your email</div>
+              </div>
+              <div>
+                <input type="text" class="form-control" placeholder="Address" name="address" required />
+                <div class="invalid-feedback">Please enter your address </div>
+              </div>
+              <div>
+                <input type="text" class="form-control" placeholder="pincode" name="pincode" required />
+                <div class="invalid-feedback">Please enter your pincode</div>
+              </div>
+              <div>
+                <input type="password" class="form-control" placeholder="password" name="password"  required />
+              </div>
+             
+             
+              <div class="btn_box">
+                <input type="submit" value="register" >
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+</html>
+{% endblock  %}

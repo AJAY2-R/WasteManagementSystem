@@ -1,0 +1,56 @@
+{% extends 'user/base.html'%}
+{% load static %}
+{% block content %}
+
+<section class="book_section layout_padding">
+    <div class="container">
+      <div class="heading_container">
+        <h2>
+            Pick-up Request
+        </h2>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form_container">
+            <form method="post">
+              {% csrf_token %}
+              <input type="hidden" name="user_id" value="{{ user.user_id }}">
+                <div class="form-group">
+                  <label for="name">{{ user.name  }} <br> {{ user.address }} <br> {{user.pincode }} <br> +91 {{user.mobile }} </label>
+                </div>
+                <div class="btn_box">
+                <input type="submit" value="Confirm" class="btn btn-primary" >
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+  
+
+  <h5>Instructions for Packing</h5>
+  
+  <h5>Step-by-Step Instructions:</h5>
+  <ol>
+    <li>Separate the non-biodegradable waste into different categories based on the type of materials, such as plastic, metal, glass, paper, and other materials.</li>
+    <li>Get appropriate containers or bags for each category of waste. Ensure they are sturdy and suitable for containing the specific waste material.</li>
+    <li>Create or obtain labels for each container or bag, clearly indicating the type of non-biodegradable waste it will hold (e.g., "Plastic," "Metal," "Glass," "Paper").</li>
+    <li>If there are any sharp or hazardous non-biodegradable items (e.g., broken glass, sharp metal), wrap them securely in old newspaper or bubble wrap before placing them in their respective containers.</li>
+    <li>Begin filling each container or bag with the corresponding type of non-biodegradable waste. Make sure to avoid mixing different materials to facilitate recycling later.</li>
+    <li>Once each container or bag is filled, securely seal them to prevent any spills or leaks during transportation.</li>
+    <li>If you plan to store the waste before disposal or recycling, keep the containers in a designated area that is safe and separate from other materials.</li>
+    <li>If transporting the waste, load the sealed containers carefully into a vehicle, making sure they are stable to avoid any accidents during transit.</li>
+    <li>Dispose of the non-biodegradable waste in accordance with local regulations and guidelines. If possible, prioritize recycling by taking the waste to a recycling center or using curbside recycling services.</li>
+    <li>If any non-biodegradable items can be reused or repurposed, consider doing so to minimize waste.</li>
+    <li>After packing and disposing of the non-biodegradable waste, ensure the packing area is clean and tidy.</li>
+    <li>Review the process to identify any improvements for future waste management.</li>
+  </ol>
+</div>
+</section>
+
+
+
+
+
+</body>
+</html>
+{% endblock  %}

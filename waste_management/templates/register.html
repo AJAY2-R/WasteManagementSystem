@@ -1,0 +1,140 @@
+{% extends 'base1.html' %}
+{% load static %}
+
+
+{% block content %}
+{% if message %}
+<script>
+  alert("{{message}}")
+</script>
+{% endif %}
+<style>
+		#pincode-validation-message {
+			color: red;
+			margin-top: 5px;
+		}
+
+		#checkPinCode {
+			transform: scale(1.5); /* Increase the size of the checkbox */
+			margin-right: 5px; /* Add some spacing between the checkbox and label */
+		}
+	
+	#submitButton:disabled {
+        background-color: lightgray; /* Change the background color */
+        cursor: not-allowed; /* Change the cursor to indicate disabled state */
+    }
+</style>
+  <!-- ================ start banner area ================= -->	
+	<section class="blog-banner-area" id="category">
+		<div class="container h-100">
+			<div class="blog-banner">
+				<div class="text-center">
+					<h1>Register</h1>
+					<nav aria-label="breadcrumb" class="banner-breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Register</li>
+            </ol>
+          </nav>
+				</div>
+			</div>
+    </div>
+	</section>
+	<!-- ================ end banner area ================= -->
+
+	<section class="login_box_area section-margin">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6">
+					<div class="login_box_img">
+						<div class="hover">
+							<h4>Already have an account?</h4>
+							<a class="button button-account" href="login">Login Now</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-6">
+					<div class="login_form_inner register_form_inner">
+						<h3>Create an account</h3>
+						<div class="form_container">
+							<form action=" " method="POST" class="needs-validation" novalidate>
+								{% csrf_token %}
+								<div class="col-md-12 form-group">
+									<input type="text" class="form-control" placeholder="Name"  name="name" required />
+									<div class="invalid-feedback">Please enter your name</div>
+								</div>
+								<div class="col-md-12 form-group">
+									<input type="text" class="form-control" placeholder="Number" name="phone" required />
+									<div class="invalid-feedback">Please enter your number</div>
+								</div>
+								<div class="col-md-12 form-group">
+									<input type="email" class="form-control" placeholder="Email" name="email" required />
+									<div class="invalid-feedback">Please enter your email</div>
+								</div>
+								<div class="col-md-12 form-group">
+									<input type="text" class="form-control" placeholder="Address" name="address" required />
+									<div class="invalid-feedback">Please enter your address</div>
+								</div>
+								<div class="col-md-12 form-group">
+									<input type="checkbox" id="checkPinCode" name="checkbox">
+									<label for="checkPinCode">Become a member</label>
+								</div>
+								<div class="col-md-12 form-group">
+									<input type="text" class="form-control" placeholder="Pincode" name="pincode" id="pincode" required />
+									<div class="invalid-feedback">Please enter your Pincode</div>
+									<div id="pincode-validation-message"></div>
+								</div>
+								<div class="col-md-12 form-group">
+									<input type="password" class="form-control" placeholder="Password" name="password" required />
+									<div class="invalid-feedback">Please enter your Password</div>
+								</div>
+							
+								<div class="col-md-12 form-group">
+									<input type="submit" value="Register" class="col-md-12 form-group btn btn-dark" id="submitButton">
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<script src="{% static 'vendors/jquery/jquery-3.2.1.min.js' %}"></script>
+	<script>
+		$(document).ready(function () {
+			function performValidation() {
+				var pincode = $('#pincode').val();
+				var isMember = $('#checkPinCode').prop('checked');
+				var submitbutton = document.getElementById('submitButton');
+				
+				if (isMember) {
+					$.ajax({
+						url: '/check_pincode/',
+						method: 'GET',
+						data: {pincode: pincode},
+						success: function (data) {
+							$('#pincode-validation-message').text(data.message);
+							if (data.message == "Invalid pincode")
+								submitbutton.setAttribute("disabled", "disabled");
+							else
+								submitbutton.removeAttribute("disabled");
+						},
+						error: function (xhr, status, error) {
+							$('#pincode-validation-message').text('Error occurred during validation');
+						}
+					});
+				} else {
+					$('#pincode-validation-message').text('');
+					submitbutton.removeAttribute("disabled");
+				}
+			}
+		
+			$('#pincode').on('focusout', performValidation);
+			$('#checkPinCode').on('change', performValidation);
+		});
+		</script>
+		
+	</script>
+	
+	{% endblock %}
+	

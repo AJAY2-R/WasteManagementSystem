@@ -1,0 +1,131 @@
+/*=================== custo button rule start ====================*/
+.button{
+  display: inline-block;
+  border: 1px solid $primary-color;
+  border-radius: 30px;
+  color: $title-color;
+  font-weight: 500;
+  padding: 12px 50px;
+  background: $primary-color;
+  color: #fff;
+  transition: all .4s ease;
+
+  @media(max-width: 767px){
+    padding: 8px 25px !important;    
+  }
+
+  &-subscribe{
+    // background: transparent;
+    font-size: 14px;
+    padding: 10px 20px;
+
+    @media(min-width: 800px){
+      padding: 12px 35px;
+      font-size: 15px;
+    }
+  }
+
+  &-blog{
+    padding:5px 31px;
+    font-size: 14px;
+    background: #f9f9ff;
+    border-color: #EEEEEE;
+    border-radius: 0;
+    color: $title-color;
+
+    &:hover{
+      background: $primary-color !important;
+      color: #fff !important;
+    }
+  }
+
+  &-postComment{
+    border-radius: 4px;
+    font-size: 14px;
+    margin-top: 5px;
+  }
+
+  &-contact{
+    border-radius: 0;
+    padding: 12px 26px;
+  }
+
+  &-tracking{
+    font-size: 14px;
+    padding: 8px 42px;
+  }
+
+  &-login{
+    font-size: 15px;
+    padding: 7px 44px;
+  }
+
+
+  &-coupon{
+    font-size: 15px;
+    padding: 6px 45px;
+  }
+
+  &-paypal{
+    width: 100%;
+    padding: 8px 30px;
+  }
+
+  &-account{
+    padding: 7px 42px;
+    background: transparent;
+    border-color: #fff;
+
+    &:hover{
+      border-color: #fff !important;
+    }
+  }
+
+  &-header{
+    padding: 10px 45px;
+    background: transparent;
+    color: $title-color;
+    border-color: #EEEEEE;
+  }
+
+  &-hero{
+    padding: 12px 41px;
+  }
+
+  &--active{
+    background: $primary-color;
+    color: #fff;
+  }
+
+  &-contactForm{
+    border: 1px solid $primary-color !important;
+    border-radius: 0;
+    padding: 11px 26px;
+  }
+
+  &-review{
+    padding: 12px 40px;
+    border-radius: 30px;
+  }
+
+  &:hover{
+    border-color: $primary-color;
+    background: transparent;
+    color: $title-color;
+  }
+
+  &-register{
+    font-size: 14px;
+    border: 0;
+    border-radius: 0;
+    padding: 9px 15px;
+    text-transform: uppercase;
+    background: #c5322d;
+
+    &:hover{
+      background: #c5322d;
+      opacity: .7;
+      color: #fff;
+    }
+  }
+}

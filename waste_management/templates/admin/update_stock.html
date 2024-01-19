@@ -1,0 +1,56 @@
+{% extends 'admin/base.html'%}
+{% load static %}
+{% block content %}
+<div class="flex justify-center items-center  bg-gray-100">
+  <div class="bg-white p-8 rounded shadow-md w-3/4" >
+  <div class="centered-container">
+    <div class="container">
+      <div class="heading_container">
+        <h2>
+            Stock Update
+        </h2>
+      </div>
+        <div class="col-md-6">
+          <div class="form_container">
+            <form method="post" class="needs-validation" novalidate >
+              {% csrf_token %}
+              <div>
+                <input type="text"  placeholder="Quantity" name="qty" class="w-full border p-2 rounded">
+                
+                <div class="text-red-500 hidden">
+                  Please enter the Quantity
+                </div>
+              </div>
+              <div class="btn_box">
+                <br>
+                <input type="submit" class='btn btn-secondary btn-block'value="Submit" >
+              </div>
+            </form>
+          </div>
+        </div>
+    </div>
+  </div>
+<script>
+  // JavaScript to enable form validation
+  ;(function() {
+    'use strict';
+
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.querySelectorAll('.needs-validation');
+
+    // Loop over them and prevent submission
+    Array.prototype.slice.call(forms).forEach(function(form) {
+      form.addEventListener('submit', function(event) {
+        if (!form.checkValidity()) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+
+        form.classList.add('was-validated');
+      }, false);
+    });
+  })();
+
+</script>
+</html>
+{% endblock  %}

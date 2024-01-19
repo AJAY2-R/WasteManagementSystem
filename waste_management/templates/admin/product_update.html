@@ -1,0 +1,50 @@
+{% extends 'admin/base.html'%}
+{% load static %}
+{% block content %}
+<section class="book_section layout_padding">
+    <div class="container">
+      <div class="heading_container">
+        <h2 class="h2">
+            Edit Product
+        </h2>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form_container">
+            <form method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
+              {% csrf_token %}
+              <div class="col-md-12 form-group">
+                <input type="text" class="form-control" placeholder="Name"  name="name"  value= "{{pd.name}}"required/>
+                <div class="invalid-feedback">Please enter the name </div>
+              </div>
+              <div class="col-md-12 form-group">
+                <input type="text" class="form-control" placeholder="Description" name="desc" value= "{{pd.desc}}" required/>
+                <div class="invalid-feedback">This field can't leave blank </div>
+              </div>
+              <div class="col-md-12 form-group">
+                <input type="text" class="form-control" placeholder="Rate" name="rate"  value= "{{pd.rate}} "required/>
+                <div class="invalid-feedback">Please enter the rate </div>
+              </div>
+              <div class="col-md-12 form-group">
+                <input type="text" class="form-control" placeholder="Point" name="point" value= "{{pd.point}}" required/>
+                <div class="invalid-feedback">Please enter the point </div>
+              </div>
+              <div class="col-md-12 form-group">
+                Don't need to change image <input type="checkbox" name="exclude_image" value="1">
+                <input type="file" class="form-control" placeholder="Image" name="image"   />
+              </div>
+             
+             
+              <div class="btn_box">
+                <input type="submit" class='btn btn-secondary btn-block'value="Submit" >
+              </div>
+            </form>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+</body>
+</html>
+{% endblock  %}

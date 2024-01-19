@@ -1,0 +1,72 @@
+{% extends 'base1.html' %}
+{% load static %}
+{% block  content %}
+  <!--================Single Product Area =================-->
+	<div class="product_image_area">
+		<div class="container">
+			<div class="row s_product_inner">
+				<div class="col-lg-6">
+					<div class="owl-carousel owl-theme s_Product_carousel">
+						<div class="single-prd-item">
+							<img class="img-fluid" src="media/{{pd.image}}" alt="pd.image">
+						</div>
+						<!-- <div class="single-prd-item">
+							<img class="img-fluid" src="img/category/s-p1.jpg" alt="">
+						</div>
+						<div class="single-prd-item">
+							<img class="img-fluid" src="img/category/s-p1.jpg" alt="">
+						</div> -->
+					</div>
+				</div>
+				<div class="col-lg-5 offset-lg-1">
+					<div class="s_product_text">
+						<h3>{{pd.name}}</h3>
+						<h2>₹{{pd.rate}}</h2>
+						<ul class="list">
+							
+							<li><a href="#"><span>Availibility</span> :{% if i.status == 0 %} Not Available 
+								{% else %}
+									Available
+								{% endif %}</a></li>
+						</ul>
+						
+						<label for="qty">Quantity:</label>
+        
+						<input type="number" name="qty" id="quantityInput" size="2" max="5"   title="Quantity:" value=1>
+
+						<p>{{pd.desc}}</p>
+						<div class="product_count">						
+							<a class="btn btn-primary" href="UserRegister"  id='buyLink'>	BUY</a>             
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<br>
+	<br>
+
+
+	<script>
+		// Get the anchor element and input field
+		const buyLink = document.getElementById('buyLink');
+		const quantityInput = document.getElementById('quantityInput');
+	  
+		
+		quantityInput.addEventListener('change', () => {
+		  // Get the current quantity value
+		  const quantity = quantityInput.value;
+	  
+		  // Append the quantity to the existing link
+		  const updatedHref = `Checkout?id={{ pd.id }}&red=f&quantity=${quantity}`;
+	  
+		  // Set the updated href to the anchor element
+		  buyLink.setAttribute('href', updatedHref);
+		});
+	  </script>
+	  
+	<!--================End Single Product Area =================-->
+	
+	{% endblock  %}
+
+	

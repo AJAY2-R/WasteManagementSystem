@@ -1,0 +1,148 @@
+{% extends 'user/base.html' %}
+{% block content %} 
+{% load static %}
+
+<style>
+  .hide {
+      display: none;
+  }
+  </style>
+
+	<!-- ================ start banner area ================= -->	
+	<section class="blog-banner-area" id="category">
+		<div class="container h-50">
+			<div class="blog-banner">
+				<div class="text-center">
+					<h1>Product Checkout</h1>
+					<nav aria-label="breadcrumb" class="banner-breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Checkout</li>
+            </ol>
+          </nav>
+				</div>
+			</div>
+    </div>
+	</section>
+	<!-- ================ end banner area ================= -->
+  
+  
+  <!--================Checkout Area =================-->
+  <section class="checkout_area section-margin--small">
+    <div class="container">
+        
+        <div class="billing_details">
+            <div class="row">
+                <div class="col-lg-8">
+                    <h3>Billing Details</h3>
+                    
+                    <form class="row contact_form" method="post" novalidate="novalidate">
+                      {% csrf_token %}
+                      <div class="form-group">
+                        <p style='color:black'>{{ user.name  }} <br> {{ user.address }} <br> {{user.pincode }} <br> +91 {{user.mobile }} </p>
+                        <br>
+                        <input type="checkbox" id="check" name="check" onchange="toggleBillingDetails()"><span >Use this address </span>
+                      </div>
+                      <br>
+                        
+                        <div class="col-md-12 form-group p_star">
+                            <input type="text" class="form-control" id="add1" name="add1" placeholder="Address line 01">
+                        </div>
+                        <div class="col-md-12 form-group p_star">
+                            <input type="text" class="form-control" id="add2" name="add2" placeholder="Address Line 02">
+                        </div>
+                        <div class="col-md-6 form-group ">
+                          <input type="text" class="form-control" id="number" name="number" placeholder="Phone">
+                      </div>  
+                        <div class="col-md-12 form-group">
+                            <input type="text" class="form-control" id="zip" name="zip" placeholder="Postcode/ZIP">
+                        </div>
+                
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="order_box">
+                                <h2>Your Order</h2>
+                                <ul class="list list_2">
+                                    <li><h4>Product <span>Total</span></h4></li>
+                                    <li><a>{{pd.name}} <span class="middle"></span> <span class="last">
+                                        {% if opt == 'redeem' %}
+                                        {{pd.point}} W-Points 
+                                        {% else%}
+                                        ₹ {{pd.rate}} x {{qty}} </span> </a></li>
+                                        {% endif %}
+                                </ul>
+                                <br>
+                                <ul class="list list_2">
+                                    <li><a>Total <span class='last'>     {% if opt == 'redeem' %}
+                                        {{pd.point}} W-Points 
+                                        {% else%}
+                                        ₹ {{total}} </a></li>
+                                        {% endif %}
+                                </ul>
+                                <br>
+                                <div class="creat_account">
+                                    <input type="checkbox" id="f-option4" name="selector" required >
+                                    <label for="f-option4">I’ve read and accept the </label>
+                                    <a href="#">terms & conditions*</a>
+                                </div>
+                                  <ul class="list list_2">
+                                    {% if opt == 'redeem' %}
+                                  <li><input type="submit" class="button button-paypal" value="Pay with W-Points" name='redeem'></li><br>
+                                  {% else %}
+                                    <input type="hidden"  name ="qty" value={{qty}}>
+
+                                  <li><input type="submit" class="button button-paypal" value="Pay with Cash" name='purchase' ></li>
+                                  {% endif %}
+                                  </ul>
+                            </div>
+                        </div>
+
+
+                      </form>
+            </div>
+        </div>
+    </div>
+  </section>
+  <!--================End Checkout Area =================-->
+<!-- ... (other HTML code) ... -->
+
+<!-- Add the <script> tag to include JavaScript -->
+  <script>
+    function toggleBillingDetails() {
+        // Get the checkbox element
+        var checkbox = document.getElementById("check");
+    
+        // Get the input fields
+        var numberInput = document.getElementById("number");
+        var add1Input = document.getElementById("add1");
+        var add2Input = document.getElementById("add2");
+        var zipInput = document.getElementById("zip");
+    
+        // If the checkbox is checked, hide the input fields
+        if (checkbox.checked) {
+            numberInput.classList.add("hide");
+            add1Input.classList.add("hide");
+            add2Input.classList.add("hide");
+            zipInput.classList.add("hide");
+        } else {
+            // If the checkbox is unchecked, show the input fields
+            numberInput.classList.remove("hide");
+            add1Input.classList.remove("hide");
+            add2Input.classList.remove("hide");
+            zipInput.classList.remove("hide");
+        }
+    }
+    </script>
+    
+    <!-- ... (other HTML code) ... -->
+    
+    <!-- CSS styles to define the "hide" class -->
+    <style>
+    .hide {
+        display: none;
+    }
+    </style>
+    
+    <!-- ... (other HTML code) ... -->
+    
+  {% endblock %}

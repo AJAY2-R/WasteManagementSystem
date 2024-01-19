@@ -1,0 +1,62 @@
+{% extends 'admin/base.html' %}
+
+{% block content %}
+<div class="card col-span-2 xl:col-span-1" style="width:100%">
+  <center><h1 class="h2">Products</h1><center>
+  <table class="w-full table-auto border-collapse">
+
+    <thead>
+      <tr class="border-b-2">
+        <th class="p-3 text-left bg-gray-100">Name</th>
+        <th class="p-3 text-left bg-gray-100">Description</th>
+        <th class="p-3 text-left bg-gray-100">Rate</th>
+        <th class="p-3 text-left bg-gray-100">Point</th>
+        <th class="p-3 text-left bg-gray-100">Stock</th>
+        <th class="p-3 text-left bg-gray-100">Image</th>
+        <th class="p-3 text-left bg-gray-100">Add Stock</th>
+        <th class="p-3 text-left bg-gray-100">Action</th>
+      </tr>
+    </thead>
+
+    <tbody>
+
+      {% for i in pd %}
+      <tr class="hover:bg-grey-100 border-b border-gray-200">
+
+        <td class="p-3">
+          <a href='ProductEdit?id={{i.id}}' class="text-blue-500">{{i.name}}</a>
+        </td>
+
+        <td class="p-3">{{i.desc}}</td>
+        <td class="p-3">{{i.rate}}</td>
+        <td class="p-3">{{i.point}}</td>
+        <td class="p-3">{{i.stock}}</td>
+
+        <td class="p-3">
+          <img src="media/{{i.image}}" alt="{{i.image}}" class="w-16 h-16">
+        </td>
+
+        <td class="p-3">
+          <a href='UpdateStock?id={{i.id}}' 
+             class="px-4 py-2 bg-blue-500 text-white rounded">
+            Update Stock
+          </a>
+        </td>
+
+        <td class="p-3">
+          {% if i.status == 0 %}
+            <a href="ManageProduct?id={{i.id}}" class="px-4 py-2 bg-red-500 text-white rounded">Not Available</a>  
+          {% else %}
+            <a href="ManageProduct?id={{i.id}}" class="px-4 py-2 bg-green-500 text-white rounded">Available</a>
+          {% endif %}
+        </td>
+
+      </tr>
+      {% endfor %}
+
+    </tbody>
+
+  </table>
+
+</div>
+{% endblock %}  

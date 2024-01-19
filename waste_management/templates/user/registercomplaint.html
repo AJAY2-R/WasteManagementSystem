@@ -1,0 +1,63 @@
+{% extends 'user/base.html'%}
+{% load static %}
+{% block content %}
+<html>
+    <body>
+       
+<section class="book_section layout_padding">
+  <div class="centered-container">
+    <div class="container">
+      <div class="heading_container">
+        <h2>
+            Register Complaint
+        </h2>
+      </div>
+        <div class="col-md-6">
+          <div class="form_container">
+            <form method="post" class="needs-validation" novalidate >
+              {% csrf_token %}
+              <div>
+                <input type="text" class="form-control" placeholder="Subject"  name="subject" required/>
+                <div class="invalid-feedback">Please enter the subject</div>
+              </div>
+              <br>
+              <div>
+                <textarea class="form-control"  name="comp" required /></textarea>
+                <div class="invalid-feedback">This Field can't leave blank</div>
+              </div>    
+              <div class="btn_box">
+                <br>
+                <input type="submit" class='btn btn-secondary btn-block'value="Submit" >
+              </div>
+            </form>
+          </div>
+        </div>
+    </div>
+  </div>
+  </section>
+</body>
+
+<script>
+  // JavaScript to enable form validation
+  ;(function() {
+    'use strict';
+
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.querySelectorAll('.needs-validation');
+
+    // Loop over them and prevent submission
+    Array.prototype.slice.call(forms).forEach(function(form) {
+      form.addEventListener('submit', function(event) {
+        if (!form.checkValidity()) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+
+        form.classList.add('was-validated');
+      }, false);
+    });
+  })();
+
+</script>
+</html>
+{% endblock  %}

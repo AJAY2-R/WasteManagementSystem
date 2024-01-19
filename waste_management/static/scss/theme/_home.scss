@@ -1,0 +1,453 @@
+/*=================== hero banner start ====================*/
+.hero-banner{
+  background: #F1F6F7;
+  position: relative;
+  margin-bottom: 10px;
+
+  @media(min-width: 991px){
+    z-index: 111;
+  }
+
+  &::before{
+    content: "";
+    display: block;
+    width: 5%;
+    height: 100%;
+    background: $primary-color;
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    @media(min-width: 575px){
+      width: 20%;
+    }
+
+    @media(min-width: 991px){
+      width: 35%;
+    }
+  }
+
+  &__img{
+    position: relative;
+    top: 1px;
+  }
+
+  &__content{
+
+    @media(max-width: 575px){
+      padding-bottom: 50px;
+    }
+
+    @media(min-width: 1000px){
+      max-width: 495px;
+    }
+
+    @media(min-width: 1200px){
+      // padding-bottom: 30px;
+    }
+
+    h4{
+      font-size: 30px;
+      font-family: $text-font;
+      color: #555555;
+      margin-bottom: 12px;
+    }
+
+    h1{
+      font-family: $text-font;
+      font-size: 25px;
+      text-transform: uppercase;
+      font-weight: 700;
+      margin-bottom: 10px;
+
+      @media(min-width: 767px){
+        font-size: 30px;
+        margin-bottom: 25px;
+      }
+
+      @media(min-width: 991px){
+        font-size: 50px;
+      }
+    }
+
+    p{
+      margin-bottom: 10px;
+
+      @media(min-width: 767px){
+        margin-bottom: 40px;
+      }
+    }
+  }
+}
+/*=================== hero banner end ====================*/
+
+
+/*=================== hero carousel start ====================*/
+.hero-carousel{
+
+  &__slide{
+    position: relative;
+
+    &::after{
+      content: "";
+      display: block;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, .8);
+      transform: translateY(50px);
+      opacity: 0;
+      transition: all .4s ease;
+    }
+
+    &Overlay{
+      position: absolute;
+      bottom: 50px;
+      background: $primary-color;
+      padding: 23px 90px 23px 25px;
+      transform: translateY(50px);
+      opacity: 0;
+      z-index: -1;
+      transition: all .4s ease-in-out;
+
+      h3{
+        font-size: 20px;
+        font-weight: 400;
+        color: #fff;
+      }
+
+      p{
+        color: #fff;
+        margin: 0;
+      }
+    }
+
+
+    &:hover{
+
+      &::after{
+        transform: translateY(0);
+        opacity: 1;
+      }
+
+      .hero-carousel__slideOverlay{
+        transform: translateY(0);
+        opacity: 1;
+        z-index: 2;
+      }
+    }
+  }
+}
+/*=================== hero carousel end ====================*/
+
+
+/*=================== product cart style start ====================*/
+.card-product{
+  border: 0;
+  margin-bottom: 30px;
+
+  p{
+    margin-bottom: 0;
+  }
+
+  &__img{
+    position: relative;
+    
+
+    &Overlay{
+      background: rgba(255, 255, 255, .5);
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      padding: 30px 5px;
+      transform: translateY(30px);
+      opacity: 0;
+      z-index: -1;
+      transition: all .48s ease;
+
+      li{
+        display: inline-block;
+
+        button{
+          border: 0;
+          border-radius: 0;
+          padding: 7px 12px;
+          background: $primary-color-blurry;
+
+          i,span{
+            font-size: 15px;
+            color: #fff;
+            vertical-align: middle;
+          }
+
+          &:hover{
+            background: $primary-color;
+          }
+        }
+
+        &:not(:last-child){
+          margin-right: 5px;
+        }
+      }
+    }
+  }
+
+  &__title{
+    a{
+      color: $title-color;
+    }
+  }
+
+  &__price{
+    font-size: 18px;
+    font-weight: 500;
+  }
+
+  &:hover{
+
+    .card-product__imgOverlay{
+      opacity: 1;
+      z-index: 1;
+      transform: translateY(0);
+    }
+
+    .card-product__title a{
+      color: $primary-color;
+    }
+  }
+}
+/*=================== product cart style end ====================*/
+
+
+/*=================== offer section start  ====================*/
+.offer{
+  background: url('../img/home/parallax-bg.png') right center no-repeat;
+  background-size: cover;
+
+  @media(min-width: 1200px){
+    background-size: 100% 100%;
+  }
+
+  &__content{
+    padding: 100px 0 110px 0;
+
+    @media(min-width: 1000px){
+      padding: 122px 0 135px 0;
+    }
+
+    h3{
+      font-size: 35px;
+      font-weight: 400;
+      margin-bottom: 20px;
+
+      @media(min-width: 650px){
+        font-size: 50px;
+        margin-bottom: 25px;
+      }
+    }
+
+    h4{
+      font-size: 30px;
+    }
+
+    p{
+      color: #555555;
+    }
+  }
+}
+/*=================== offer section end  ====================*/
+
+
+/*=================== best selling product carousel start  ====================*/
+#bestSellerCarousel{
+
+  .owl-prev,.owl-next{
+    width: 40px;
+    height: 40px;
+    background: #f1f6f7;
+
+    i,span{
+      font-size: 15px;
+      color: $primary-color;
+      line-height: 40px;
+    }
+
+    &:hover{
+      background: $primary-color;
+
+      i,span{
+        color: $white;
+      }
+    }
+  }
+
+  .owl-prev{
+    position: absolute;
+    top: 30%;
+    transform: translateY(-30%);
+    left: -20px;
+
+    @media(min-width: 1340px){
+      left: -105px;
+    }
+  }
+
+  .owl-next{
+    position: absolute;
+    top: 30%;
+    transform: translateY(-30%);
+    right: -20px;
+
+    @media(min-width: 1340px){
+      right: -105px;
+    }
+  }
+}
+/*=================== best selling product carousel end  ====================*/
+
+
+/*=================== blog style card start  ====================*/
+.card-blog{
+  border: 0;
+  
+  .card-body{
+    padding: 25px 25px 25px 0;
+  }
+
+  &__info{
+    margin-bottom: 12px;
+
+    li{
+      display: inline-block;
+      font-size: 14px;
+      color: #999999;
+
+      a{
+        color: #999999;
+      }
+
+      i,span{
+        margin-right: 5px;
+        vertical-align: middle;
+      }
+
+      &:not(:last-child){
+        margin-right: 20px;
+      }
+    }
+  }
+
+  &__title{
+    font-size: 20px;
+    margin-bottom: 20px;
+
+    a{
+      color: $title-color;
+    }
+  }
+
+  &__link{
+    font-weight: 500;
+    color: $title-color;
+
+    i,span{
+      font-size: 13px;
+      padding-left: 3px;
+      display: inline-block;
+      transition: all .5s ease;
+    }
+  }
+
+  &:hover{
+    .card-blog__title a{
+      color: $primary-color;
+    }
+
+    .card-blog__link{
+      color: $primary-color;
+
+      i,span{
+        padding-left: 10px;
+      }
+    }
+  }
+}
+/*=================== blog style card end  ====================*/
+
+
+/*=================== subscribe section start  ====================*/
+.subscribe{
+  padding: 45px 10px;
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 0px -5px 20px 0px rgba(56, 74, 235, 0.1); 
+
+  @media(min-width: 1000px){
+    padding: 85px 10px;
+  }
+  
+  &__title{
+    font-size: 28px;
+    font-weight: 500;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+
+    @media(min-width: 1000px){
+      font-size: 36px;
+    }
+  }
+
+  &-form{
+    .form-group{
+      margin-bottom: 0;
+      position: relative;
+
+      .info{
+        position: absolute;
+        top: 50px;
+        left: 10px;
+        color: $primary-color;
+      }
+    }
+
+    .form-control{
+      border-radius: 30px;
+      height: 50px;
+      border-color: #EEEEEE;
+      padding-left: 20px;
+      font-size: 14px;
+
+      @media(min-width: 800px){
+        min-width: 380px;
+      }
+
+      &::placeholder{
+        color: #999999;
+      }
+
+      &:focus{
+        outline: 0;
+        box-shadow: none;
+      }
+    }
+
+    button{
+      margin-left: 15px;
+    }
+  }
+
+  &-position{
+    margin-bottom: 20px;
+    
+
+    @media(min-width: 1000px){
+      position: relative;
+      top: 100px;
+      margin-bottom: 0;
+    }
+  }
+}
+/*=================== subscribe section end  ====================*/

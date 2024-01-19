@@ -1,0 +1,78 @@
+{% extends 'admin/base.html' %}
+
+{% block content %}
+
+<div class="flex items-center justify-center">
+
+  <div class="bg-white p-8 rounded-lg shadow-md max-w-md">
+
+    <h2 class="text-lg font-medium text-center">Update Order</h2>
+
+    <form method="post" novalidate>
+
+      {% csrf_token %}
+
+      <div class="mt-4">
+        <label>Update To</label>
+
+        <select name="update" class="w-full border p-2 rounded">
+          <option>Select</option>  
+          <option>Shipped</option>
+          <option>Delivered</option>
+          <option>Canceled</option>
+        </select>
+      </div>
+
+      <div class="mt-4">
+        <label>Message</label>
+      
+        <textarea 
+          name="message"
+          class="w-full border p-2 rounded"
+          rows="4"
+          required
+        ></textarea>
+
+        <div class="hidden text-sm text-red-600 mt-1">
+          Please enter a message
+        </div>
+      </div>
+
+      <button
+        type="submit"
+        class="mt-4 py-2 px-4 bg-blue-500 hover:bg-blue-600 rounded text-white block w-full"
+      >
+        Submit
+      </button>
+
+    </form>
+
+  </div>
+
+</div>
+
+
+<script>
+  // JavaScript to enable form validation
+  ;(function() {
+    'use strict';
+
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.querySelectorAll('.needs-validation');
+
+    // Loop over them and prevent submission
+    Array.prototype.slice.call(forms).forEach(function(form) {
+      form.addEventListener('submit', function(event) {
+        if (!form.checkValidity()) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+
+        form.classList.add('was-validated');
+      }, false);
+    });
+  })();
+
+</script>
+</html>
+{% endblock  %}

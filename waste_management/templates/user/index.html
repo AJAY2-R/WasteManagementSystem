@@ -1,0 +1,68 @@
+{% extends 'user/base.html' %}
+{% block content %} 
+{% load static %}
+{% if message %}
+<script>
+  alert("{{message}}")
+</script>
+{% endif %}
+
+{% if messages %}
+  {% for message in messages %}
+    <div class="alert alert-info">
+      {{ message }}
+    </div>
+  {% endfor %}
+{% endif %}
+  <main class="site-main">
+    
+    <!--================ Hero banner start =================-->
+    <section class="hero-banner">
+      <div class="container">
+        <div class="row no-gutters align-items-center pt-60px">
+         
+          <div class="col-sm-7 col-lg-6 offset-lg-1 pl-4 pl-md-5 pl-lg-0">
+            <div class="hero-banner__content">
+              
+              <h4>Hi {{ user.name }}</h4><center>
+              <div class="hero-banner__colection" >
+                {% if uid.last_name == '1' %} 
+              <a class="button button-hero" href="#"><img src="{% static 'img/award_star.png' %}" class='reward-icon'><p>{{ user.point }}</p>Availabe Points </a> &nbsp;&nbsp;
+              {% endif %}
+              </div>
+              <br><br><br>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!--================ Hero banner start =================-->
+    {% if uid.last_name == '1' %}
+    <center>
+
+      <a class="btn btn-outline-primary ms-2" href="PickupRequest">Request For Pickup</a> &nbsp;&nbsp;
+      <a class="btn btn-outline-primary ms-2" href="PointHistory">Points History </a> &nbsp;&nbsp;
+    </center>
+    {% endif %}
+    <!-- ================ offer section start ================= --> 
+    <section class="offer" id="parallax-1" data-anchor-target="#parallax-1" data-300-top="background-position: 20px 30px" data-top-bottom="background-position: 0 20px">
+      <div class="container">
+        <div class="row">
+          <div class="col-xl-5">
+            <div class="offer__content text-center">
+              <h4>If you are not buying recycled products,you're not really recycling</h4>
+              <p>Ed Begley .Jr</p>
+              
+              <a class="button button--active mt-3 mt-xl-4" href="Shop">Shop Now</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ================ offer section end ================= --> 
+
+    
+  </main>
+
+  {% endblock %}

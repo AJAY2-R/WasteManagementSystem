@@ -1,0 +1,15 @@
+/*=================== section intro css start ====================*/
+.section-intro{
+
+  p{
+    margin-bottom: 3px;
+  }
+
+  &__style{
+    border-bottom: 2px solid $primary-color;
+    padding-bottom: 8px;
+  }
+}
+/*=================== section intro css end ====================*/
+
+

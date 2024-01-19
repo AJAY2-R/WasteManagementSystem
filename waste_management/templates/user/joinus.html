@@ -1,0 +1,35 @@
+{% extends 'user/base.html'%}
+{% load static %}
+{% block content %}
+
+<section class="book_section layout_padding">
+  {% if  check == True %}
+    <div class="container">
+      <div class="heading_container">
+        <h2>
+            Join Us
+        </h2>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form_container">
+           
+            <form method="post">
+              {% csrf_token %}
+                <div class="form-group">
+                  <label for="name">{{ user.name  }} <br> {{ user.address }} <br> {{user.pincode }} <br> +91 {{user.mobile }} </label>
+                </div>
+                <div class="btn_box">
+                  
+                    <input type="submit" value="Confirm" class="btn btn-primary" onclick="return confirm('Are you sure');">
+                  </form>
+                  {% else %}
+                      <h5 style="color:red"> Sorry We are not avilable in you location
+                  {% endif %}
+              </div>
+            
+          </div>
+        </div>
+      </div>
+    </section>
+  {% endblock %}

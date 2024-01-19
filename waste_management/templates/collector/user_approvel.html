@@ -1,0 +1,39 @@
+{% extends 'collector/base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+{% if message %}
+<script>
+  alert("{{message}}")
+</script>
+{% endif %}
+<table class="table table-bordered table-hover">
+  {% if  user %}
+    <tr>   
+        <th class="p-3 mb-2 bg-primary text-light">Name </th>
+        <th class="p-3 mb-2 bg-primary text-light">email </th>
+        <th class="p-3 mb-2 bg-primary text-light">address</th>
+        <th class="p-3 mb-2 bg-primary text-light">Approve</th>
+        <th class="p-3 mb-2 bg-primary text-light">Reject</th>
+
+    </tr> 
+    {% for i in user %}
+    <tr>
+            <td>{{i.user.first_name}}</td>
+            <td>{{i.email}}</td>
+            <td>{{i.address}}</td>
+            <td><a href="approve?id={{i.user_id}}" class="btn btn-success"> Approve</a></td>
+            <td><a href="reject?id={{i.user_id}}" class="btn btn-danger"> Reject</a></td>
+            
+
+    </tr>  
+    {% endfor %}
+    {% else %}
+    <tr>
+      <td colspan=5>No pending verifcation </td>
+    </tr>
+    {% endif %}
+</table>
+{% endblock %}

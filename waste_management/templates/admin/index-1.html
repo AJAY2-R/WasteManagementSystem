@@ -1,0 +1,145 @@
+
+	{% extends 'admin/base.html' %}
+
+	{% block content %}
+	
+	{% load static %}
+	
+	<link rel="stylesheet" href="{% static 'css/animate.min.css' %}"/>
+	
+	<style>
+	
+	  /* Banner */
+	
+	  .banner {
+		background-image: url("{% static 'images/admin-banner.jpg' %}");
+		background-size: cover;
+		background-position: center; 
+		padding: 100px 0;
+		text-align: center;
+	  }
+	
+	  h1 {
+		margin: 0;
+		color: white;
+		text-shadow: 2px 2px black;
+	  }
+	  
+	  /* Buttons */
+	
+	  .button-hero {
+		padding: 15px 32px;
+		font-size: 16px;
+		border-radius: 8px;
+		cursor: pointer;
+		transition: transform 0.3s ease;
+	  }
+	  
+	  .button-hero:hover {
+		transform: translateY(-2px);
+		box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+	  }
+	
+	  .button-group {
+		display: flex; 
+		margin-bottom: 20px;
+	  }
+	
+	  .button-group .button-hero {
+		margin: 0 10px;
+	  }
+	
+	  .green {
+		background-color: #4CAF50;
+		color: white;
+		border: 2px solid #4CAF50;
+	  }
+	
+	  .green:hover {
+		background-color: #3e8e41;
+	  }
+	
+	  .blue {
+		background-color: #2196F3;
+		color: white;
+		border: 2px solid #2196F3;
+	  }
+	  
+	  .blue:hover {
+		background: #0b7dda;
+	  }
+	
+	  /* Page Content */
+	
+	  .content {
+		max-width: 800px;
+		margin: 40px auto;
+		padding: 20px;
+		background: white; 
+		border-radius: 10px;
+		box-shadow: 2px 4px 16px rgba(0,0,0,0.1);
+	  }
+	  
+	  .alert-info {
+		background-color: #e7f3fe;
+		border-color: #b3e5ef;
+	  }
+	
+	</style>
+	
+	<div class="banner">
+	
+	  <h1 class="animate__animated animate__bounce">Admin Dashboard</h1>
+	
+	  <div class="buttons">
+	
+		<div class="button-group">
+		  <a class="button-hero green animate__animated animate__rubberBand" href="collectorRegistration">Add Collectors</a>
+		  <a class="button-hero green animate__animated animate__rubberBand" href="CollectorList">Collector List</a>
+		</div>
+	
+		<div class="button-group">
+		  <a class="button-hero blue animate__animated animate__rubberBand" href="addproduct">Add Product</a>
+		  <a class="button-hero blue animate__animated animate__rubberBand" href="viewproducts">View Products</a>
+		</div>
+	
+		<div class="button-group">
+		  <a class="button-hero green animate__animated animate__rubberBand" href="AddCategory">Add Category</a>
+		  <a class="button-hero green animate__animated animate__rubberBand" href="ViewCategory">View Category</a>
+		</div>
+	
+		<div class="button-group">
+		  <a class="button-hero blue animate__animated animate__rubberBand" href="ViewOrders">View Orders</a>
+		  <a class="button-hero blue animate__animated animate__rubberBand" href="CollectionHistory">Collection History</a>
+		</div>
+	
+		<div class="button-group">
+		  <a class="button-hero green animate__animated animate__rubberBand" href="ViewComplaints">View Complaints</a>
+		  <a class="button-hero green animate__animated animate__rubberBand" href="PickupRequest">Pickup Requests</a> 
+		</div>
+	
+		<div class="button-group">
+		  <a class="button-hero blue animate__animated animate__rubberBand" href="AddLocation">Add Location</a>
+		  <a class="button-hero blue animate__animated animate__rubberBand" href="ViewLocations">View Locations</a>
+		</div>
+	
+	  </div>
+	
+	</div>
+	
+	<div class="content">
+	
+	  {% if messages %}
+		{% for message in messages %}
+		  <div class="alert alert-info animate__animated animate__fadeInDown">
+			{{ message }}  
+		  </div>
+		{% endfor %}
+	  {% endif %}
+	
+	  <!-- Other page content -->
+	
+	</div>
+	
+	{% endblock %}
+	  

@@ -1,0 +1,39 @@
+{% extends 'admin/base.html' %}
+{% block content %}
+<div class="flex flex-col items-center p-4" style="width:100%">
+
+    <h2 class="text-2xl font-bold">Complaints</h2>
+  
+    <div class="overflow-x-auto rounded-lg shadow mt-4">
+  
+      <table class="w-full text-left border-collapse">
+    <tr>  
+        <th class="p-3 mb-2 bg-primary text-light">User id </th>
+        <th class="p-3 mb-2 bg-primary text-light">Name </th>
+        <th class="p-3 mb-2 bg-primary text-light">Number </th>
+        <th class="p-3 mb-2 bg-primary text-light">Subject </th>
+        <th class="p-3 mb-2 bg-primary text-light">Complaint</th>
+        <th class="p-3 mb-2 bg-primary text-light">Date</th>
+        <th class="p-3 mb-2 bg-primary text-light">Status</th>
+        <th class="p-3 mb-2 bg-primary text-light">Action</th>
+    </tr> 
+    
+    {% for i in comp %}
+    <tr>
+             <td class="p-3 font-medium bg-gray-100">{{i.user.id}}</td>
+            <td class="p-3 font-medium bg-gray-100">{{i.user.name}}</td>
+            <td class="p-3 font-medium bg-gray-100">{{i.user.mobile}}</td>
+            <td class="p-3 font-medium bg-gray-100">{{i.subject}}</td>
+            <td class="p-3 font-medium bg-gray-100">{{i.complaint}}</td>
+            <td class="p-3 font-medium bg-gray-100">{{i.rdate}}</td>
+            <td class="p-3 font-medium bg-gray-100">{{i.status}}</td>
+            <td class="p-3 font-medium bg-gray-100">
+                {% if i.status != 'Solved' %}
+                <a href="ComplaintSolved?id={{i.id}}"  class="btn btn-danger" > Solve</a></td>
+                {% endif %}
+    </tr>  
+    {% endfor %}
+
+</table>
+</div>
+{% endblock %}

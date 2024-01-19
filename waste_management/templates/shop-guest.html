@@ -1,0 +1,32 @@
+{% extends 'base1.html' %}
+{% block content %}
+
+<section class="section-margin calc-60px">
+    <div class="container">
+
+      <div class="section-intro pb-60px">
+        <p>Popular Item in the market</p>
+     </div>
+     <div class="item-container">
+        {% for i in prod %}
+        <div class="disp">
+          <div class="card text-center card-product">
+            <div class="card-product__img">
+              <img class="img-fluid" src="media/{{ i.image }}" alt="{{i.image}}">
+              <ul class="card-product__imgOverlay" 
+                <li><a href="Product?id={{ i.id }}" class='btn btn-danger'></i>Purchase</a></li>
+              </ul>
+            </div>
+            <div class="card-body" >
+              <h4 class="card-product__title"><a href="Product?id={{ i.id }}">{{ i.name }}</a></h4>
+              <p><span class="material-symbols-outlined"></span>₹ {{i.rate}}</i></p>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+
+      
+    </div>
+  </section>
+  {% endblock %}

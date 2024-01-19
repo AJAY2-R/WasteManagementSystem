@@ -1,0 +1,26 @@
+{% extends 'user/base.html' %}
+{% block content %}
+<h1 align="center" >Complaint Status </h1>
+<table class="table table-bordered table-hover">
+    <tr>   
+        <th class="p-3 mb-2 bg-primary text-light">Complaint id</th>
+        <th class="p-3 mb-2 bg-primary text-light">Subject</th>
+        <th class="p-3 mb-2 bg-primary text-light">Description</th>
+        <th class="p-3 mb-2 bg-primary text-light">Date Register</th>
+        <th class="p-3 mb-2 bg-primary text-light">Status</th>
+        <th class="p-3 mb-2 bg-primary text-light">Date Solved</th>
+    </tr> 
+    
+    {% for i in update %}
+    <tr>
+            <td>{{i.id}}</td>
+            <td>{{i.subject}}</td>
+            <td>{{i.complaint}}</td>
+            <td>{{i.rdate}}</td>
+            <td>{{i.status}}</td>
+            <td>{{i.sdate}}</td>
+    </tr>  
+    {% endfor %}
+
+</table>
+{% endblock %}

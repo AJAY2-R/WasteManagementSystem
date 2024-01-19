@@ -1,0 +1,63 @@
+
+{% extends 'collector/base.html' %}
+{% block content %}
+<body>
+  {% if messages %}
+  {% for message in messages %}
+    <div class="alert alert-info">
+      {{ message }}
+    </div>
+  {% endfor %}
+{% endif %}
+    <h2 class="mb-3 bread" align="Center">Collection History</h2>
+    <form action="" method="post" enctype="multipart/form-data" class="p-4 p-md-5 contact-form">
+      {% csrf_token %}
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label>Start Date</label>
+            <input type="date" name="strt_date" class="form-control" placeholder="Select Date" required>
+          </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label>End Date</label>
+              <input type="date" name="end_date" class="form-control" placeholder="Select Date" required>
+            </div>
+          </div>
+        <div class="col-md-12">
+          <div class="form-group" aling="center">
+            <input type="submit" name="add" value="Search Now" class="btn btn-primary py-3 px-5">
+          </div>
+        </div>
+      </div>
+    </form>
+    
+  </div>
+  <h4 style="margin-left:30px">Total Waste Collected :{{total}}kg</h4> 
+    <div class="centered-container">
+        <table class="table table-bordered table-hover rounded-table">
+            <tr>   
+                <th class="p-3 mb-2 bg-primary text-light">CollectionId</th>
+                <th class="p-3 mb-2 bg-primary text-light">Category</th>
+                <th class="p-3 mb-2 bg-primary text-light">Quantity</th>
+                <th class="p-3 mb-2 bg-primary text-light">Date</th>
+                <th class="p-3 mb-2 bg-primary text-light">User</th>
+            </tr> 
+            
+            {% for i in col %}
+            {% csrf_token %}
+            <tr>
+                    <td>{{i.id}}</td>
+                    <td>{{i.category.name}}</td>
+                    <td>{{i.weight}}kg</td>
+                    <td>{{i.pid.pdate}}</td>
+                    <td>{{i.pid.userid.name}}</td>
+                
+            </tr>  
+            {% endfor %}
+    
+        </table>
+    </div>
+{% endblock %}
+</body

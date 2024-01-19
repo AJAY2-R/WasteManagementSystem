@@ -1,0 +1,110 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>E-Waste</title>
+		<link rel="stylesheet" href="{% static 'css/shop.css' %}">
+		  <link rel="icon" href="{% static 'img/Fevicon.png' %}" type="image/png">
+		<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+		<link rel="stylesheet" href="{% static 'vendors/fontawesome/css/all.min.css' %}">
+		  <link rel="stylesheet" href="{% static 'vendors/themify-icons/themify-icons.css' %}">
+		<link rel="stylesheet" href="{% static 'vendors/nice-select/nice-select.css' %}">
+		<link rel="stylesheet" href="{% static 'vendors/owl-carousel/owl.theme.default.min.css' %}">
+		<link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+		<link rel="stylesheet" href="{% static 'css/style.css' %}">
+	  </head>
+<body>
+<header class="header_area">
+    <div class="main_menu">
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+          <a class="navbar-brand logo_h" href="/">
+			<div class="logo">
+				<span>w</span>
+				<span>e</span>
+				<span>r</span>
+				<span>e</span>
+			  </div>
+		  </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+            <ul class="nav navbar-nav menu_nav ml-auto mr-auto">
+              <li class="nav-item active"><a class="nav-link" href="/">Home</a></li>
+                  <li class="nav-item"><a class="nav-link" href="Shop">Shop</a></li>
+                  
+				
+                  <li class="nav-item"><a class="nav-link" href="login">Login</a></li>
+                  <li class="nav-item"><a class="nav-link" href="UserRegister">Register</a></li>
+            </ul>
+
+           
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  {% block content %}
+  
+  {% endblock  %}
+
+  
+  <!--================ Start footer Area  =================-->	
+	<footer class="footer">
+		<div class="footer-bottom">
+			<div class="container">
+				<div class="row d-flex">
+					<p class="col-lg-12 footer-text text-center">
+						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<!--================ End footer Area  =================-->
+
+
+
+  <script src="{% static 'vendors/jquery/jquery-3.2.1.min.js' %}"></script>
+  <script src="{% static 'css/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'vendors/skrollr.min.js' %}"></script>
+  <script src="{% static 'vendors/owl-carousel/owl.carousel.min.js' %}"></script>
+  <script src="{% static 'vendors/nice-select/jquery.nice-select.min.js' %}"></script>
+  <script src="{% static 'vendors/jquery.ajaxchimp.min.js' %}"></script>
+  <script src="{% static 'vendors/mail-script.js' %}"></script>
+  <script src="{% static 'js/main.js' %}"></script>
+  <script>
+	$(document).ready(function() {
+		$('#submitButton').click(function() {
+			var pincode = $('#pincode').val();
+			var isMember = $('#checkPinCode').prop('checked');
+			
+			if (isMember) {
+				$.ajax({
+					url: '/check_pincode/',
+					method: 'GET',
+					data: { pincode: pincode },
+					success: function(data) {
+						$('#validationMessage').text(data.message);
+					},
+					error: function(xhr, status, error) {
+						$('#validationMessage').text('Error occurred during validation');
+					}
+				});
+			} else {
+				$('#validationMessage').text('Validation skipped because checkbox is unchecked');
+			}
+		});
+	});
+	</script>
+</body>
+</html>

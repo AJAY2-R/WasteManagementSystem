@@ -1,0 +1,77 @@
+/* Instagram Area css
+============================================================================================ */
+.instagram_area{
+	.container{
+		max-width: 1625px;
+	}
+	position: relative;
+	.insta_btn{
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		transform: translateX(-50%) translateY(-50%);
+		z-index: 2;
+		.theme_btn{
+			background: #fff;
+			border-radius: 5px;
+			padding: 0px 45px;
+			line-height: 50px;
+			color: $title-color;
+			font-size: 13px;
+			// font-family: $rob;
+			font-weight: 500;
+			box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.1); 
+		}
+	}
+	&.top_pad{
+		padding-top: 120px;
+	}
+}
+.instagram_image{
+	margin-bottom: -120px !important;
+	a{
+		flex: 0 0 16.667%;
+		max-width: 16.667%;
+		display: block;
+		overflow: hidden;
+		img{
+			width: 100%;
+			transition: all 300ms ease;
+		}
+		&:hover{
+			img{
+				transform: scale(1.05);
+			}
+		}
+	}
+}
+/* End Instagram Area css
+============================================================================================ */
+
+
+
+
+/* Instagram responsive start
+============================================================================================ */
+@media(max-width: 991px){
+	.instagram_image {
+		margin-bottom: 120px !important;
+	}
+}
+@media(max-width: 767px){
+	.instagram_image a {
+		flex: 0 0 33.33%;
+		max-width: 33.33%;
+	}
+}
+@media(max-width: 575px){
+	.instagram_image {
+		margin-bottom: 70px !important;
+	}	
+	.instagram_image a {
+		flex: 0 0 50%;
+		max-width: 50%;
+	}
+}
+/* Instagram responsive end
+============================================================================================ */

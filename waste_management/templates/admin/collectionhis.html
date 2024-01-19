@@ -1,0 +1,63 @@
+{% extends 'admin/base.html' %}
+
+{% block content %}
+<div class="flex flex-col items-center p-4" style="width:100%">
+
+  <h2 class="text-2xl font-bold text-center">Collection History</h2>
+
+  <form method="post" class=" bg-white p-4 rounded-lg shadow mt-4 w-full md:w-1/2">
+
+    {% csrf_token %}
+
+    <h5 class="font-medium mb-2">Select Date</h5>
+    <div align="center">
+        <label>Start Date</label>
+        <input type="date" name="strt_date" class="border p-2 rounded w-1/3 md:w-1/2" required  >  
+ 
+        <label>End Date</label>
+        <input type="date" name="end_date" class="border p-2 rounded w-1/3 md:w-1/2" required>
+    </div>
+
+    <div class="text-center mt-4">
+      <button class="bg-blue-500 text-white py-2 px-4 rounded">Search Now</button>
+    </div>
+
+  </form>
+
+  <h4 class="font-bold mt-4">Total Waste Collected: {{total}}kg</h4>
+
+  <div class="overflow-x-auto rounded-lg shadow w-full">
+
+    <table class="w-full table-layout: fixed;">
+    
+      <thead class="display:fixed">
+        <tr class="border-b-2 ">
+          <th class="p-1 bg-gray-100">CollectionId</th>
+          <th class="p-3 bg-gray-100">Category</th>
+          <th class="p-3 bg-gray-100">Quantity</th>
+          <th class="p-3 bg-gray-100">Collector</th>
+          <th class="p-3 bg-gray-100">Date</th>
+          <th class="p-3 bg-gray-100">User</th>
+        </tr>  
+      </thead>
+
+      <tbody>
+        {% for i in col %}
+          <tr class="hover:bg-gray-100 border-b border-black-400">
+            <td class="p-3 border border-black-400">{{i.pid.id}}</td>
+            <td class="p-3 border border-black-40 0">{{i.category.name}}</td>
+            <td class="p-3 border border-black-400">{{i.weight}}kg</td>
+            <td class="p-3 border border-black-400">{{i.pid.collector.name}}</td>
+            <td class="p-3 border border-black-400">{{i.pid.pdate}}</td>
+            <td class="p-3 border border-black-400">{{i.pid.userid.name}}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+
+    </table>
+
+  </div>
+
+</div>
+
+{% endblock %}

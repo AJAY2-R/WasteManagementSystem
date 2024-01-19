@@ -1,0 +1,23 @@
+{% extends 'user/base.html' %}
+{% block content %}
+<center><h2 >Point History </h2></center>
+<table class="table table-bordered table-hover">
+    <tr>   
+        <th class="p-3 mb-2 bg-primary text-light"> Points </th>
+        <th class="p-3 mb-2 bg-primary text-light">Category </th>
+        <th class="p-3 mb-2 bg-primary text-light">Weight</th>
+        <th class="p-3 mb-2 bg-primary text-light">Date</th>
+    </tr> 
+    
+    {% for i in col %}
+    <tr>
+           <td>{{ i.point  }}</td>
+            <td>{{i.category.name}}</td>
+            <td>{{i.weight}}</td>
+            <td>{{i.pid.pdate}}</td>
+
+    </tr>  
+    {% endfor %}
+
+</table>
+{% endblock %}

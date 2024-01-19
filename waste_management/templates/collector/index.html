@@ -1,0 +1,35 @@
+{% extends 'collector/base.html' %}
+{% block content %} 
+{% load static %}
+{% if message %}
+<script>
+  alert("{{message}}")
+</script>
+{% endif %}
+
+{% if messages %}
+  {% for message in messages %}
+    <div class="alert alert-info">
+      {{ message }}
+    </div>
+  {% endfor %}
+{% endif %}
+  <main class="site-main" style="background:lightblue ;height:100vh">
+    
+    <!--================ Hero banner start =================-->
+      <div class="container" >
+        <div class="row no-gutters align-items-center pt-60px">
+              <a class="button btn-outline-info" href="viewuser" >View Users</a>&nbsp;&nbsp;&nbsp; 
+              <a class="button" href="UserVerify">Verify Users</a> &nbsp;&nbsp;&nbsp; 
+              <a class="button " href="PickupRequest">View Requests</a> &nbsp;&nbsp;&nbsp; 
+              <a class="button " href="CollectionHistory">Collection History</a> &nbsp;&nbsp;&nbsp; 
+        </div>
+      </div>
+
+    <!--================ Hero banner start =================-->
+
+
+
+  </main>
+
+  {% endblock %}

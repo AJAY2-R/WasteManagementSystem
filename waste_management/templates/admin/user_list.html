@@ -1,0 +1,28 @@
+{% extends 'admin/base.html' %}
+{% block content %}
+<div class="flex flex-col items-center p-4" style="width:100%">
+
+        <h2 class="text-2xl font-bold text-center">Users</h2>
+<div class="overflow-x-auto rounded-lg shadow mt-4">
+
+  <table class="w-full text-left border-collapse">
+<tr>   
+        <th class="p-3 mb-2 bg-primary text-light">Name </th>
+        <th class="p-3 font-medium bg-gray-100">Address </th>
+        <th class="p-3 font-medium bg-gray-100">Mobile</th>
+        <th class="p-3 font-medium bg-gray-100">Email id </th>
+        <th class="p-3 font-medium bg-gray-100">User Type </th>
+    </tr> 
+    
+    {% for i in user %}
+    <tr class="hover:bg-gray-100 border-b border-gray-200">
+            <td class="p-3">{{i.name}}</td>
+            <td class="p-3">{{i.address}}</td>
+            <td class="p-3">{{i.mobile}}</td>
+            <td class="p-3">{{i.email}}</td>
+            <td class="p-3">{% if i.user.last_name == '0' or i.user.last_name == '4' %} Regular User {% else %} Waste Donater {% endif %}</td>
+    </tr>  
+    {% endfor %}
+
+</table>
+{% endblock %}

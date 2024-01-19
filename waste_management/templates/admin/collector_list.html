@@ -1,0 +1,37 @@
+{% extends 'admin/base.html' %}
+{% block content %}
+    <div class="flex flex-col items-center p-4" style="width:100%">
+            <h2 class="text-2xl font-semibold mb-4">Collector Information</h2>
+             <table class="table-auto w-full text-left">
+                <thead>
+                    <tr class="bg-primary text-gray text-left uppercase">
+                        <th class="py-3 px-6 font-medium">Name</th>
+                        <th class="py-3 px-6 font-medium">Address</th>
+                        <th class="py-3 px-6 font-medium">Mobile</th>
+                        <th class="py-3 px-6 font-medium">Mail id</th>
+                        <th class="py-3 px-6 font-medium">Collection History</th>
+                    </tr>
+                </thead>
+                <tbody class="text-gray-600">
+                    {% for i in collector %}
+                    <tr class="border-b border-gray-400 hover:bg-gray-100">
+                        <td class="py-3 px-6">{{i.name}}</td>
+                        <td class="py-3 px-6">{{i.address}}</td>
+                        <td class="py-3 px-6">{{i.mobile}}</td>
+                        <td class="py-3 px-6">{{i.email}}</td>
+                        <td class="py-3 px-6">
+                            <a href="CollectionHistoryCollector?cid={{i.id}}" class="text-blue-500 hover:underline">
+                                View Details
+                            </a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+</div>
+
+
+{% endblock %}

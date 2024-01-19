@@ -1,0 +1,23 @@
+{% extends 'collector/base.html' %}
+{% block content %}
+<table class="table table-bordered table-hover">
+    <tr> 
+        <th class="p-3 mb-2 bg-primary text-light">Reqest Id </th>  
+        <th class="p-3 mb-2 bg-primary text-light">Name </th>
+        <th class="p-3 mb-2 bg-primary text-light">Address </th>
+        <th class="p-3 mb-2 bg-primary text-light">Requested Date</th>
+        <th class="p-3 mb-2 bg-primary text-light">Action </th>
+    </tr> 
+    
+    {% for i in pickup %}
+    <tr>
+            <td>{{i.id}}</td>
+            <td>{{i.userid.name}}</td>
+            <td>{{i.userid.address}}</td>
+            <td>{{i.rdate}}</td>
+            <td><a href="Collection?id={{i.id}}" class="btn btn-success"> Collect </a></td>
+    </tr>  
+    {% endfor %}
+
+</table>
+{% endblock %}

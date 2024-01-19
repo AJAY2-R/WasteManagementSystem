@@ -1,0 +1,90 @@
+{% extends 'admin/base.html' %}
+
+{% block content %}
+
+  
+  <div class="max-w-3xl mx-auto rounded-lg  ">
+
+    <h2 class="text-2xl font-bold text-center">Collector Registration</h2>
+
+    <div class="mt-8 md:flex">
+
+      <div class="w-full md:w-1/2">
+
+        <form method="POST" class="needs-validation" novalidate>
+        
+          {% csrf_token %}
+
+          <div class="mb-4">
+            <input type="text" class="w-full border rounded p-2" placeholder="Name" name="name" required>
+            <div class="hidden text-red-500">Please enter name</div>  
+          </div>
+
+          <div class="mb-4">
+            <input type="text" class="w-full border rounded p-2" placeholder="Number" name="phone" required>
+            <div class="hidden text-red-500">Please enter number</div>
+          </div>
+
+          <div class="mb-4">
+            <input type="email" class="w-full border rounded p-2" placeholder="Email" name="email" required>
+            <div class="hidden text-red-500">Please enter email</div>  
+          </div>
+
+          <div class="mb-4">
+            <input type="text" class="w-full border rounded p-2" placeholder="Address" name="address" required>
+            <div class="hidden text-red-500">Please enter address</div>
+          </div>
+          
+          <div class="mb-4">
+            <input type="password" class="w-full border rounded p-2" placeholder="Password" name="password" required>
+            <div class="hidden text-red-500">Please enter password</div>  
+          </div>
+
+          <button type="submit" class="bg-blue-500 text-white py-2 px-4 rounded">Register</button>
+        
+        </form>
+
+      </div>
+
+      <div class="w-full md:w-1/2">
+        <!-- Map -->
+      </div>
+
+    </div>
+
+  </div>
+
+<script>
+
+  // Form validation
+  const forms = document.querySelectorAll('.needs-validation');
+  
+  Array.from(forms).forEach(form => {
+  
+    form.addEventListener('submit', event => {
+  
+      if (!form.checkValidity()) {
+  
+        event.preventDefault();
+        event.stopPropagation();
+        
+        // Show error messages  
+        form.querySelectorAll(':invalid').forEach(input => {
+          input.nextElementSibling.classList.remove('hidden');  
+        })
+  
+      } else {
+      
+        // Hide error messages
+        form.querySelectorAll('div.text-red-600').forEach(div => {
+          div.classList.add('hidden');
+        })
+      
+      }
+  
+    });
+  
+  });
+  </script>
+{% endblock %}
+

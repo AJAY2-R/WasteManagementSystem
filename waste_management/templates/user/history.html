@@ -1,0 +1,29 @@
+{% extends 'user/base.html' %}
+{% block content %}
+<h1 align="center">Waste Pickup's</h1>
+<table class="table table-bordered table-hover">
+    <tr>   
+        <th class="p-3 mb-2 bg-primary text-light"> Reqest Id</th>
+        <th class="p-3 mb-2 bg-primary text-light"> Points </th>
+        <th class="p-3 mb-2 bg-primary text-light">Requested Date </th>
+        <th class="p-3 mb-2 bg-primary text-light">Collected Date</th>
+    </tr> 
+    
+    {% for i in his %}
+    <tr>
+           <td>{{i.id}}</td>
+           <td>{{ i.tpoint }}</td>
+            <td>{{i.rdate}}</td>
+            <td>{% if i.pdate == NULL %}
+                    Not Collected
+                {% else %}
+                    {{i.pdate}} &nbsp; <a href="PointHistory?id={{i.id}}" class="btn-info">View Details</a>
+                {% endif %}
+            
+            </td>
+
+    </tr>  
+    {% endfor %}
+
+</table>
+{% endblock %}
