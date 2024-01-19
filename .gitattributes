@@ -1,4 +1,5 @@
 *.css linguist-detectable=false
+*.scss linguist-detectable=false
 *.js linguist-detectable=true
 *.html linguist-detectable=false
 *.mako linguist-detectable=false
